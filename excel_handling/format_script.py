@@ -1,5 +1,6 @@
-# This is a script to format an excel file 
-# to allow for easier data processing
+# This is a script to format the BOM excel file
+# before it can be imported in Windchill Risk and Reliability
+# Author: Syed Ali Hasany
 
 
 
@@ -7,6 +8,9 @@ import numpy
 import pandas as pd
 import os
 import math
+
+# The functions below, valid_row and valid_column, return the row and column
+# numbers after which the valid data starts
 
 def valid_row(df):
     rows    = len(df.axes[0])
@@ -41,15 +45,13 @@ columns = len(df.axes[1])
 start_row = valid_row(df)
 start_column = valid_column(df)
 
-print(start_row)
-print(start_column)
 
+# dropping rows before the valid row
 for row in range(0,start_row):
     df = df.drop(labels=[row], axis=0)
 
+# dropping the first column (this part requires more sophistication)
 df = df.drop(df.columns[start_column], axis=1)
-
-print(df)
 
 
 df.to_excel('new_formatted.xlsx', header = False, index = False)
