@@ -2,7 +2,9 @@
 # before it can be imported in Windchill Risk and Reliability
 # Author: Syed Ali Hasany
 
-
+# To run this file from anywhere (in any directory)
+# add the path of this script file to the PATH environment variable
+# simply run >> format_script.py
 
 import numpy
 import pandas as pd
